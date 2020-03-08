@@ -1,0 +1,27 @@
+import { getSessionToken } from "./auth";
+import { getAllThemes, getTheme, getMyProfile, getProfiles, getProfile, postFeedback, postApplication } from "./index";
+import { getAllArticles, getRelatedArticles } from "./news";
+import { getAllResults, getResult, getAllVotes, getVotes, vote, getAllTransitions, getTransition, getAllComments, getComments, comment } from "./vote";
+declare const _default: {
+    getAllThemes: typeof getAllThemes;
+    getTheme: typeof getTheme;
+    getMyProfile: typeof getMyProfile;
+    getProfiles: typeof getProfiles;
+    getProfile: typeof getProfile;
+    postFeedback: typeof postFeedback;
+    postApplication: typeof postApplication;
+    getSessionToken: typeof getSessionToken;
+    getAllArticles: typeof getAllArticles;
+    getRelatedArticles: typeof getRelatedArticles;
+    getAllResults: typeof getAllResults;
+    getResult: typeof getResult;
+    getAllVotes: typeof getAllVotes;
+    getVotes: typeof getVotes;
+    vote: typeof vote;
+    getAllTransitions: typeof getAllTransitions;
+    getTransition: typeof getTransition;
+    getAllComments: typeof getAllComments;
+    getComments: typeof getComments;
+    comment: typeof comment;
+};
+export default _default;

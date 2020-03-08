@@ -1,0 +1,19 @@
+{
+  "name": "aicevote",
+  "version": "0.1.0",
+  "description": "AICEVOTE API Client Library",
+  "main": "./dist/index.js",
+  "repository": "https://github.com/yujixr/aicevote",
+  "author": "YUJI",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn webpack"
+  },
+  "devDependencies": {
+    "axios": "^0.19.2",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
