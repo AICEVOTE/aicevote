@@ -2,7 +2,7 @@
   "name": "aicevote",
   "version": "0.1.0",
   "description": "AICEVOTE API Client Library",
-  "main": "./dist/index.js",
+  "main": "./dist/aicevote.js",
   "repository": "https://github.com/yujixr/aicevote",
   "author": "YUJI",
   "license": "MIT",
