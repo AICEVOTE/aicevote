@@ -60,7 +60,7 @@ export async function getProfile(userProvider: string, userID: string): Promise<
 
 export async function postFeedback(feedback: string): Promise<void> {
     try {
-        await axios.get("/feedback?message=" + feedback);
+        await axios.post("/feedback?message=" + feedback);
         return;
     } catch (e) {
         throw e;
@@ -69,7 +69,7 @@ export async function postFeedback(feedback: string): Promise<void> {
 
 export async function postApplication(application: string): Promise<void> {
     try {
-        await axios.get("/application?message=" + application);
+        await axios.post("/application?message=" + application);
         return;
     } catch (e) {
         throw e;

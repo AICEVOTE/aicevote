@@ -83,7 +83,7 @@ export async function getVotes(themeID: number, sessionToken: string): Promise<V
 
 export async function vote(themeID: number, sessionToken: string, answer: string): Promise<Vote[]> {
     try {
-        const data = (await axios.get("/vote/votes/" + themeID + "?sessiontoken=" + sessionToken + "&answer=" + answer)).data;
+        const data = (await axios.put("/vote/votes/" + themeID + "?sessiontoken=" + sessionToken + "&answer=" + answer)).data;
         return data.votes.map((data: Vote) => ({
             answer: data.answer,
             userProvider: data.userProvider,
