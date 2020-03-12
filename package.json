@@ -1,6 +1,6 @@
 {
   "name": "aicevote",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "AICEVOTE API Client Library",
   "main": "./dist/aicevote.js",
   "repository": "https://github.com/yujixr/aicevote",
@@ -9,8 +9,10 @@
   "scripts": {
     "start": "yarn webpack"
   },
+  "dependencies": {
+    "axios": "^0.19.2"
+  },
   "devDependencies": {
-    "axios": "^0.19.2",
     "ts-loader": "^6.2.1",
     "typescript": "^3.8.3",
     "webpack": "^4.42.0",

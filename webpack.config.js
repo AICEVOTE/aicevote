@@ -7,7 +7,7 @@ module.exports = {
         filename: "aicevote.js",
         path: path.join(__dirname, "dist"),
         library: "aicevote",
-        libraryExport: "default",
+        libraryExport: "",
         libraryTarget: "umd",
         globalObject: "this",
     },
@@ -18,5 +18,8 @@ module.exports = {
         rules: [
             { test: /\.tsx?$/, loader: "ts-loader" }
         ]
+    },
+    externals: {
+        axios: "axios"
     }
 };
