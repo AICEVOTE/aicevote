@@ -1,10 +1,10 @@
 import axios from "./axios";
 
-export async function getSessionToken(): Promise<string> {
+export async function getSessionToken(sessionID: string): Promise<string> {
     try {
-        return (await axios.get("/auth/sessiontoken", {
-            withCredentials: true
-        })).data.sessionToken;
+        return (await axios.get(
+            "/auth/sessiontoken?sessionid=" + sessionID
+        )).data.sessionToken;
     } catch (e) {
         throw e;
     }

@@ -1,13 +1,13 @@
 import axios from "./axios";
 
 interface Article {
-    source: string,
-    author: string,
-    title: string,
-    description: string,
-    uri: string,
-    uriToImage: string,
-    publishedAt: number
+    source: string;
+    author: string;
+    title: string;
+    description: string;
+    uri: string;
+    uriToImage: string;
+    publishedAt: number;
 }
 
 export async function getAllArticles(): Promise<{ latest: Article[], related: Article[][] }> {

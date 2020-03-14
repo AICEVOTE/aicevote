@@ -1,10 +1,11 @@
+import type { userProvider } from "./index";
 interface Result {
     results: number[];
     counts: number[];
 }
 interface Vote {
     answer: number;
-    userProvider: "twitter" | "legacy";
+    userProvider: userProvider;
     userID: string;
 }
 interface Transition {
@@ -19,7 +20,7 @@ interface Transition {
 }
 interface Comment {
     message: string;
-    userProvider: "twitter" | "legacy";
+    userProvider: userProvider;
     userID: string;
     createdAt: number;
 }

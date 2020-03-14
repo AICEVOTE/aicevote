@@ -1,26 +1,27 @@
 import axios from "./axios";
+import type { userProvider } from "./index";
 
 interface Result {
-    results: number[],
-    counts: number[]
+    results: number[];
+    counts: number[];
 }
 
 interface Vote {
-    answer: number,
-    userProvider: "twitter" | "legacy",
-    userID: string
+    answer: number;
+    userProvider: userProvider;
+    userID: string;
 }
 
 interface Transition {
-    shortTransition: { timestamp: number, percentage: number[] }[],
-    longTransition: { timestamp: number, percentage: number[] }[]
+    shortTransition: { timestamp: number, percentage: number[] }[];
+    longTransition: { timestamp: number, percentage: number[] }[];
 }
 
 interface Comment {
-    message: string,
-    userProvider: "twitter" | "legacy",
-    userID: string,
-    createdAt: number
+    message: string;
+    userProvider: userProvider;
+    userID: string;
+    createdAt: number;
 }
 
 export async function getAllResults(): Promise<Result[]> {

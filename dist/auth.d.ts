@@ -1,1 +1,1 @@
-export declare function getSessionToken(): Promise<string>;
+export declare function getSessionToken(sessionID: string): Promise<string>;

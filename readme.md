@@ -1,4 +1,4 @@
-# AICEVOTE
+# aicevote
 
 [![npm version](https://img.shields.io/npm/v/aicevote.svg?style=flat-square)](https://www.npmjs.org/package/aicevote)
 [![install size](https://packagephobia.now.sh/badge?p=aicevote)](https://packagephobia.now.sh/result?p=aicevote)
@@ -78,17 +78,17 @@ import aicevote from "aicevote";
 
 ``` typescript
 // Auth
-function getSessionToken(): Promise<string>;
+function getSessionToken(sessionID: string): Promise<string>;
 
 // Index
 function getAllThemes(): Promise<Theme[]>;
 function getTheme(themeID: number): Promise<Theme>;
 function getMyProfile(sessionToken: string): Promise<Profile>;
 function getProfiles(users: {
-    userProvider: string;
+    userProvider: userProvider;
     userID: string;
 }[]): Promise<Profile[]>;
-function getProfile(userProvider: string, userID: string): Promise<Profile>;
+function getProfile(userProvider: userProvider, userID: string): Promise<Profile>;
 function postFeedback(feedback: string): Promise<void>;
 function postApplication(application: string): Promise<void>;
 
@@ -112,10 +112,11 @@ function getComments(themeID: number): Promise<Comment[]>;
 function comment(themeID: number, sessionToken: string, message: string): Promise<Comment[]>;
 ```
 
-### Interfaces
+### Types
 
 ``` typescript
 // Index
+type userProvider = "twitter" | "legacy";
 interface Theme {
     themeID: number;
     title: string;
@@ -126,7 +127,7 @@ interface Theme {
     topicality: number;
 }
 interface Profile {
-    userProvider: "twitter" | "legacy";
+    userProvider: userProvider;
     userID: number;
     name: string;
     imageURI: string;
@@ -151,7 +152,7 @@ interface Result {
 }
 interface Vote {
     answer: number;
-    userProvider: "twitter" | "legacy";
+    userProvider: userProvider;
     userID: string;
 }
 interface Transition {
@@ -166,7 +167,7 @@ interface Transition {
 }
 interface Comment {
     message: string;
-    userProvider: "twitter" | "legacy";
+    userProvider: userProvider;
     userID: string;
     createdAt: number;
 }
