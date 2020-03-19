@@ -1,12 +1,14 @@
-import type { userProvider } from "./index";
+import type { userProvider } from "./user";
 interface Result {
     results: number[];
     counts: number[];
 }
-interface Vote {
+export interface Vote {
+    themeID: number;
     answer: number;
     userProvider: userProvider;
     userID: string;
+    createdAt: number;
 }
 interface Transition {
     shortTransition: {
@@ -18,7 +20,8 @@ interface Transition {
         percentage: number[];
     }[];
 }
-interface Comment {
+export interface Comment {
+    themeID: number;
     message: string;
     userProvider: userProvider;
     userID: string;

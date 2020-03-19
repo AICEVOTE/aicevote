@@ -1,15 +1,17 @@
 import axios from "./axios";
-import type { userProvider } from "./index";
+import type { userProvider } from "./user";
 
 interface Result {
     results: number[];
     counts: number[];
 }
 
-interface Vote {
+export interface Vote {
+    themeID: number;
     answer: number;
     userProvider: userProvider;
     userID: string;
+    createdAt: number;
 }
 
 interface Transition {
@@ -17,7 +19,8 @@ interface Transition {
     longTransition: { timestamp: number, percentage: number[] }[];
 }
 
-interface Comment {
+export interface Comment {
+    themeID: number;
     message: string;
     userProvider: userProvider;
     userID: string;
@@ -51,13 +54,17 @@ export async function getAllVotes(sessionToken: string): Promise<Vote[][]> {
     try {
         return (await axios.get("/vote/votes?sessiontoken=" + sessionToken)).data.map((data: any) =>
             data.votes.map((data: Vote) => ({
+                themeID: data.themeID,
                 answer: data.answer,
                 userProvider: data.userProvider,
-                userID: data.userID
+                userID: data.userID,
+                createdAt: data.createdAt
             })).concat(data.votesFromInfluencer.map((data: Vote) => ({
+                themeID: data.themeID,
                 answer: data.answer,
                 userProvider: data.userProvider,
-                userID: data.userID
+                userID: data.userID,
+                createdAt: data.createdAt
             })))
         );
     } catch (e) {
@@ -69,13 +76,17 @@ export async function getVotes(themeID: number, sessionToken: string): Promise<V
     try {
         const data = (await axios.get("/vote/votes/" + themeID + "?sessiontoken=" + sessionToken)).data;
         return data.votes.map((data: Vote) => ({
+            themeID: data.themeID,
             answer: data.answer,
             userProvider: data.userProvider,
-            userID: data.userID
+            userID: data.userID,
+            createdAt: data.createdAt
         })).concat(data.votesFromInfluencer.map((data: Vote) => ({
+            themeID: data.themeID,
             answer: data.answer,
             userProvider: data.userProvider,
-            userID: data.userID
+            userID: data.userID,
+            createdAt: data.createdAt
         })))
     } catch (e) {
         throw e;
@@ -86,13 +97,17 @@ export async function vote(themeID: number, sessionToken: string, answer: string
     try {
         const data = (await axios.put("/vote/votes/" + themeID + "?sessiontoken=" + sessionToken + "&answer=" + answer)).data;
         return data.votes.map((data: Vote) => ({
+            themeID: data.themeID,
             answer: data.answer,
             userProvider: data.userProvider,
-            userID: data.userID
+            userID: data.userID,
+            createdAt: data.createdAt
         })).concat(data.votesFromInfluencer.map((data: Vote) => ({
+            themeID: data.themeID,
             answer: data.answer,
             userProvider: data.userProvider,
-            userID: data.userID
+            userID: data.userID,
+            createdAt: data.createdAt
         })))
     } catch (e) {
         throw e;
@@ -126,6 +141,7 @@ export async function getAllComments(): Promise<Comment[][]> {
     try {
         return (await axios.get("/vote/comments")).data.map((data: any) =>
             data.comments.map((data: Comment) => ({
+                themeID: data.themeID,
                 message: data.message,
                 userProvider: data.userProvider,
                 userID: data.userID,
@@ -141,6 +157,7 @@ export async function getComments(themeID: number): Promise<Comment[]> {
     try {
         const data = (await axios.get("/vote/comments/" + themeID)).data;
         return data.comments.map((data: Comment) => ({
+            themeID: data.themeID,
             message: data.message,
             userProvider: data.userProvider,
             userID: data.userID,
@@ -155,6 +172,7 @@ export async function comment(themeID: number, sessionToken: string, message: st
     try {
         const data = (await axios.post("/vote/comments/" + themeID + "?sessiontoken=" + sessionToken + "&message=" + message)).data;
         return data.comments.map((data: Comment) => ({
+            themeID: data.themeID,
             message: data.message,
             userProvider: data.userProvider,
             userID: data.userID,

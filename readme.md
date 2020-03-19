@@ -83,14 +83,16 @@ function getSessionToken(sessionID: string): Promise<string>;
 // Index
 function getAllThemes(): Promise<Theme[]>;
 function getTheme(themeID: number): Promise<Theme>;
+function postFeedback(feedback: string): Promise<void>;
+function postApplication(application: string): Promise<void>;
+
+// User
 function getMyProfile(sessionToken: string): Promise<Profile>;
 function getProfiles(users: {
     userProvider: userProvider;
     userID: string;
 }[]): Promise<Profile[]>;
 function getProfile(userProvider: userProvider, userID: string): Promise<Profile>;
-function postFeedback(feedback: string): Promise<void>;
-function postApplication(application: string): Promise<void>;
 
 // News
 function getAllArticles(): Promise<{
@@ -116,7 +118,6 @@ function comment(themeID: number, sessionToken: string, message: string): Promis
 
 ``` typescript
 // Index
-type userProvider = "twitter" | "legacy";
 interface Theme {
     themeID: number;
     title: string;
@@ -126,12 +127,17 @@ interface Theme {
     choices: string[];
     topicality: number;
 }
+
+// User
+type userProvider = "twitter" | "legacy";
 interface Profile {
     userProvider: userProvider;
     userID: number;
     name: string;
     imageURI: string;
     isInfluencer: boolean;
+    votes: Vote[];
+    comments: Comment[];
 }
 
 // News
@@ -150,10 +156,12 @@ interface Result {
     results: number[];
     counts: number[];
 }
-interface Vote {
+interface Vote {    
+    themeID: number;
     answer: number;
     userProvider: userProvider;
     userID: string;
+    createdAt: number;
 }
 interface Transition {
     shortTransition: {
@@ -166,6 +174,7 @@ interface Transition {
     }[];
 }
 interface Comment {
+    themeID: number;
     message: string;
     userProvider: userProvider;
     userID: string;
