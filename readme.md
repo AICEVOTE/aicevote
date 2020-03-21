@@ -1,10 +1,11 @@
 # aicevote
 
 [![npm version](https://img.shields.io/npm/v/aicevote.svg?style=flat-square)](https://www.npmjs.org/package/aicevote)
-[![install size](https://packagephobia.now.sh/badge?p=aicevote)](https://packagephobia.now.sh/result?p=aicevote)
+[![install size](https://badgen.net/packagephobia/install/aicevote?style=flat-square)](https://packagephobia.now.sh/result?p=aicevote)
 [![npm downloads](https://img.shields.io/npm/dm/aicevote.svg?style=flat-square)](https://npm-stat.com/charts.html?package=aicevote)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/aicevote/aicevote.svg?style=social&label=Stars)](https://github.com/aicevote/aicevote)
+[![MIT License](https://img.shields.io/github/license/aicevote/aicevote.svg?style=flat-square)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/aicevote/aicevote.svg?style=flat-square)](https://github.com/aicevote/aicevote)
+![TypeScript](https://img.shields.io/github/languages/top/aicevote/aicevote.svg?style=flat-square)
 
 AICEVOTE API Client Library
 
