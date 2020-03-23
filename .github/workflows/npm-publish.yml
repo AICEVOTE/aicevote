@@ -8,25 +8,27 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  publish:
 
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2      
     - name: Use Node.js 12.x
       uses: actions/setup-node@v1
       with:
         node-version: "12.x"
     - run: yarn install
     - run: yarn start
-    - run: yarn publish
+    - name: Publish to npmjs
+    - run: yarn publish --non-interactive
       env:
        NODE_AUTH_TOKEN: ${{ secrets.YARN_TOKEN }}
     - uses: actions/setup-node@v1
       with:
         registry-url: 'https://npm.pkg.github.com'
-    - run: yarn publish
+    - name: Publish to GitHub Packages
+    - run: yarn publish --non-interactive
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
