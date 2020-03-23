@@ -1,6 +1,6 @@
 {
   "name": "aicevote",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "AICEVOTE API Client Library",
   "main": "./dist/aicevote.js",
   "repository": "https://github.com/aicevote/aicevote",
