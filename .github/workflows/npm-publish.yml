@@ -21,14 +21,12 @@ jobs:
         node-version: "12.x"
     - run: yarn install
     - run: yarn start
-    - name: Publish to npmjs
     - run: yarn publish --non-interactive
       env:
        NODE_AUTH_TOKEN: ${{ secrets.YARN_TOKEN }}
     - uses: actions/setup-node@v1
       with:
         registry-url: 'https://npm.pkg.github.com'
-    - name: Publish to GitHub Packages
     - run: yarn publish --non-interactive
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
