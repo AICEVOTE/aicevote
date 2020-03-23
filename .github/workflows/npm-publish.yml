@@ -28,6 +28,7 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         registry-url: 'https://npm.pkg.github.com'
+    - run: rm -f ~/.npmrc
     - run: echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> ~/.npmrc
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
