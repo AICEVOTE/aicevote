@@ -11,35 +11,17 @@ interface Theme {
 };
 
 export async function getAllThemes(): Promise<Theme[]> {
-    try {
-        return (await axios.get("/themes")).data;
-    } catch (e) {
-        throw e;
-    }
+    return (await axios.get("/themes")).data;
 }
 
 export async function getTheme(themeID: number): Promise<Theme> {
-    try {
-        return (await axios.get("/themes/" + themeID)).data;
-    } catch (e) {
-        throw e;
-    }
+    return (await axios.get("/themes/" + themeID)).data;
 }
 
 export async function postFeedback(feedback: string): Promise<void> {
-    try {
-        await axios.post("/feedback?message=" + feedback);
-        return;
-    } catch (e) {
-        throw e;
-    }
+    await axios.post("/feedback?message=" + feedback);
 }
 
 export async function postApplication(application: string): Promise<void> {
-    try {
-        await axios.post("/application?message=" + application);
-        return;
-    } catch (e) {
-        throw e;
-    }
+    await axios.post("/application?message=" + application);
 }

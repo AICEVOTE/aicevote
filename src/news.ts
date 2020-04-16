@@ -11,17 +11,9 @@ interface Article {
 }
 
 export async function getAllArticles(): Promise<{ latest: Article[], related: Article[][] }> {
-    try {
-        return (await axios.get("/news/articles")).data;
-    } catch (e) {
-        throw e;
-    }
+    return (await axios.get("/news/articles")).data;
 }
 
 export async function getRelatedArticles(themeID: number): Promise<Article[]> {
-    try {
-        return (await axios.get("/news/articles/" + themeID)).data.articles;
-    } catch (e) {
-        throw e;
-    }
+    return (await axios.get("/news/articles/" + themeID)).data.articles;
 }
