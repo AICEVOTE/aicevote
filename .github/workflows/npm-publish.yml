@@ -18,9 +18,10 @@ jobs:
     - name: Publish to GitHub Packages
       uses: actions/setup-node@v1
       with:
-        registry-url: https://npm.pkg.github.com/
-        scope: "@aicevote"
         node-version: "12.x"
+        registry-url: "https://npm.pkg.github.com/"
+        scope: "@aicevote"
+    - run: cat ~/.npmrc
     - run: yarn install
     - run: yarn build
     - run: yarn publish
@@ -29,8 +30,9 @@ jobs:
     - name: Publish to npm Public Packages
       uses: actions/setup-node@v1
       with:
-        registry-url: https://registry.npmjs.org
         node-version: "12.x"
+        registry-url: "https://registry.npmjs.org"
+    - run: cat ~/.npmrc
     - run: yarn publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
