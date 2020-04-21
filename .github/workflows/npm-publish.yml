@@ -14,14 +14,23 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2      
-    - name: Use Node.js 12.x
+      uses: actions/checkout@v2
+    - name: Publish to GitHub Packages
       uses: actions/setup-node@v1
       with:
+        registry-url: https://npm.pkg.github.com/
+        scope: "@aicevote"
         node-version: "12.x"
     - run: yarn install
     - run: yarn build
-    - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+    - run: yarn publish
       env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - run: npm publish
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish to npm Public Packages
+      uses: actions/setup-node@v1
+      with:
+        registry-url: https://registry.npmjs.org
+        node-version: "12.x"
+    - run: yarn publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
