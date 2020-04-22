@@ -3,7 +3,7 @@
   "version": "0.1.13",
   "description": "AICEVOTE API Client Library",
   "main": "./dist/aicevote.js",
-  "types": "/dist/aicevote.d.ts",
+  "types": "./dist/aicevote.d.ts",
   "repository": "https://github.com/aicevote/aicevote",
   "author": "YUJI",
   "license": "MIT",
