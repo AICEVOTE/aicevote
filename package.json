@@ -3,11 +3,12 @@
   "version": "0.1.12",
   "description": "AICEVOTE API Client Library",
   "main": "./dist/aicevote.js",
+  "types": "/dist/aicevote.d.ts",
   "repository": "https://github.com/aicevote/aicevote",
   "author": "YUJI",
   "license": "MIT",
   "scripts": {
-    "build": "yarn webpack"
+    "build": "yarn webpack; yarn tsc"
   },
   "dependencies": {
     "axios": "^0.19.2"
