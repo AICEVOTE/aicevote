@@ -1,6 +1,6 @@
 {
   "name": "aicevote",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "AICEVOTE API Client Library",
   "main": "./dist/aicevote.js",
   "types": "./dist/aicevote.d.ts",
@@ -8,7 +8,7 @@
   "author": "YUJI",
   "license": "MIT",
   "scripts": {
-    "build": "yarn webpack; yarn tsc"
+    "build": "rm -rf dist; yarn tsc; yarn webpack"
   },
   "dependencies": {
     "axios": "^0.19.2"

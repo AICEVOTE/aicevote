@@ -27,14 +27,14 @@ Using jsDelivr CDN:
 
 ``` html
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/aicevote/dist/aicevote.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aicevote/dist/aicevote.min.js"></script>
 ```
 
 Using unpkg CDN:
 
 ``` html
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="https://unpkg.com/aicevote/dist/aicevote.js"></script>
+<script src="https://unpkg.com/aicevote/dist/aicevote.min.js"></script>
 ```
 
 > note: aicevote uses [axios](https://github.com/axios/axios) for http requests. Don't forget to load axios.

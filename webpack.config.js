@@ -4,7 +4,7 @@ module.exports = {
     mode: "production",
     entry: "./src/aicevote.ts",
     output: {
-        filename: "index.js",
+        filename: "aicevote.min.js",
         path: path.join(__dirname, "dist"),
         library: "aicevote",
         libraryExport: "",
