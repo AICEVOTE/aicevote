@@ -10,7 +10,10 @@ interface Article {
     publishedAt: number;
 }
 
-export async function getAllArticles(): Promise<{ latest: Article[], related: Article[][] }> {
+export async function getAllArticles(): Promise<{
+    latest: Article[];
+    related: { themeID: number; articles: Article[]; }[];
+}> {
     return (await axios.get("/news/articles")).data;
 }
 
