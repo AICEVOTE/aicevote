@@ -82,18 +82,8 @@ import aicevote from "aicevote";
 function getSessionToken(sessionID: string): Promise<string>;
 
 // Index
-function getAllThemes(): Promise<Theme[]>;
-function getTheme(themeID: number): Promise<Theme>;
 function postFeedback(feedback: string): Promise<void>;
 function postApplication(application: string): Promise<void>;
-
-// User
-function getMyProfile(sessionToken: string): Promise<Profile>;
-function getProfiles(users: {
-    userProvider: userProvider;
-    userID: string;
-}[]): Promise<Profile[]>;
-function getProfile(userProvider: userProvider, userID: string): Promise<Profile>;
 
 // News
 function getAllArticles(): Promise<{
@@ -102,12 +92,23 @@ function getAllArticles(): Promise<{
 }>;
 function getRelatedArticles(themeID: number): Promise<Article[]>;
 
+// User
+function getMyProfile(sessionToken: string): Promise<Profile>;
+function getProfiles(users: {
+    userProvider: userProvider;
+    userID: string;
+}[]): Promise<Profile[]>;
+
+// Theme
+function getAllThemes(): Promise<Theme[]>;
+function getTheme(themeID: number): Promise<Theme>;
+
 // Vote
 function getAllResults(): Promise<Result[]>;
 function getResult(themeID: number): Promise<Result>;
 function getAllVotes(sessionToken: string): Promise<Vote[][]>;
 function getVotes(themeID: number, sessionToken: string): Promise<Vote[]>;
-function vote(themeID: number, sessionToken: string, answer: string): Promise<Vote[]>;
+function vote(themeID: number, sessionToken: string, answer: number): Promise<Vote[]>;
 function getAllTransitions(): Promise<Transition[]>;
 function getTransition(themeID: number): Promise<Transition>;
 function getAllComments(): Promise<Comment[][]>;
@@ -118,7 +119,18 @@ function comment(themeID: number, sessionToken: string, message: string): Promis
 ### Types
 
 ``` typescript
-// Index
+// News
+interface Article {
+    source: string;
+    author: string;
+    title: string;
+    description: string;
+    uri: string;
+    uriToImage: string;
+    publishedAt: number;
+}
+
+// Theme
 interface Theme {
     themeID: number;
     title: string;
@@ -139,17 +151,6 @@ interface Profile {
     isInfluencer: boolean;
     votes: Vote[];
     comments: Comment[];
-}
-
-// News
-interface Article {
-    source: string;
-    author: string;
-    title: string;
-    description: string;
-    uri: string;
-    uriToImage: string;
-    publishedAt: number;
 }
 
 // Vote

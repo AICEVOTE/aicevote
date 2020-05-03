@@ -32,21 +32,21 @@ export async function getAllResults(): Promise<Result[]> {
 }
 
 export async function getResult(themeID: number): Promise<Result> {
-    return (await axios.get("/vote/results/" + themeID)).data;
+    return (await axios.get(`/vote/results/${themeID}`)).data;
 }
 
 export async function getAllVotes(sessionToken: string): Promise<Vote[][]> {
-    return (await axios.get("/vote/votes?sessiontoken=" + sessionToken)).data
+    return (await axios.get(`/vote/votes?sessiontoken=${sessionToken}`)).data
         .map((data: any) => data.votes.concat(data.votesFromInfluencer));
 }
 
 export async function getVotes(themeID: number, sessionToken: string): Promise<Vote[]> {
-    const data = (await axios.get("/vote/votes/" + themeID + "?sessiontoken=" + sessionToken)).data;
+    const data = (await axios.get(`/vote/votes/${themeID}?sessiontoken=${sessionToken}`)).data;
     return data.votes.concat(data.votesFromInfluencer);
 }
 
-export async function vote(themeID: number, sessionToken: string, answer: string): Promise<Vote[]> {
-    const data = (await axios.put("/vote/votes/" + themeID + "?sessiontoken=" + sessionToken + "&answer=" + answer)).data;
+export async function vote(themeID: number, sessionToken: string, answer: number): Promise<Vote[]> {
+    const data = (await axios.put(`/vote/votes/${themeID}?sessiontoken=${sessionToken}&answer=${answer}`)).data;
     return data.votes.concat(data.votesFromInfluencer);
 }
 
@@ -55,7 +55,7 @@ export async function getAllTransitions(): Promise<Transition[]> {
 }
 
 export async function getTransition(themeID: number): Promise<Transition> {
-    return (await axios.get("/vote/transitions/" + themeID)).data;
+    return (await axios.get(`/vote/transitions/${themeID}`)).data;
 }
 
 export async function getAllComments(): Promise<Comment[][]> {
@@ -64,11 +64,11 @@ export async function getAllComments(): Promise<Comment[][]> {
 }
 
 export async function getComments(themeID: number): Promise<Comment[]> {
-    const data = (await axios.get("/vote/comments/" + themeID)).data;
+    const data = (await axios.get(`/vote/comments/${themeID}`)).data;
     return data.comments;
 }
 
 export async function comment(themeID: number, sessionToken: string, message: string): Promise<Comment[]> {
-    const data = (await axios.post("/vote/comments/" + themeID + "?sessiontoken=" + sessionToken + "&message=" + message)).data;
+    const data = (await axios.post(`/vote/comments/${themeID}?sessiontoken=${sessionToken}&message=${message}`)).data;
     return data.comments;
 }

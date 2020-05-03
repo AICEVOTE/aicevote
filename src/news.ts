@@ -18,5 +18,5 @@ export async function getAllArticles(): Promise<{
 }
 
 export async function getRelatedArticles(themeID: number): Promise<Article[]> {
-    return (await axios.get("/news/articles/" + themeID)).data.articles;
+    return (await axios.get(`/news/articles/${themeID}`)).data.articles;
 }

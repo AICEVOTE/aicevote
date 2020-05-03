@@ -14,13 +14,9 @@ interface Profile {
 };
 
 export async function getMyProfile(sessionToken: string): Promise<Profile> {
-    return (await axios.get("/user/profiles/?sessiontoken=" + sessionToken)).data;
+    return (await axios.get(`/user/profiles/?sessiontoken=${sessionToken}`)).data;
 }
 
 export async function getProfiles(users: { userProvider: userProvider, userID: string }[]): Promise<Profile[]> {
     return (await axios.post("/user/profiles", users)).data;
-}
-
-export async function getProfile(userProvider: userProvider, userID: string): Promise<Profile> {
-    return (await axios.get("/user/" + userProvider + "/" + userID)).data;
 }
