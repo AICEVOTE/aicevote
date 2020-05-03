@@ -45,9 +45,8 @@ export async function getVotes(themeID: number, sessionToken: string): Promise<V
     return data.votes.concat(data.votesFromInfluencer);
 }
 
-export async function vote(themeID: number, sessionToken: string, answer: number): Promise<Vote[]> {
-    const data = (await axios.put(`/vote/votes/${themeID}?sessiontoken=${sessionToken}&answer=${answer}`)).data;
-    return data.votes.concat(data.votesFromInfluencer);
+export async function vote(themeID: number, sessionToken: string, answer: number): Promise<void> {
+    await axios.put(`/vote/votes/${themeID}?sessiontoken=${sessionToken}&answer=${answer}`);
 }
 
 export async function getAllTransitions(): Promise<Transition[]> {
@@ -68,7 +67,6 @@ export async function getComments(themeID: number): Promise<Comment[]> {
     return data.comments;
 }
 
-export async function comment(themeID: number, sessionToken: string, message: string): Promise<Comment[]> {
-    const data = (await axios.post(`/vote/comments/${themeID}?sessiontoken=${sessionToken}&message=${message}`)).data;
-    return data.comments;
+export async function comment(themeID: number, sessionToken: string, message: string): Promise<void> {
+    await axios.post(`/vote/comments/${themeID}?sessiontoken=${sessionToken}&message=${message}`);
 }

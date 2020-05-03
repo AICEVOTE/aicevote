@@ -108,12 +108,12 @@ function getAllResults(): Promise<Result[]>;
 function getResult(themeID: number): Promise<Result>;
 function getAllVotes(sessionToken: string): Promise<Vote[][]>;
 function getVotes(themeID: number, sessionToken: string): Promise<Vote[]>;
-function vote(themeID: number, sessionToken: string, answer: number): Promise<Vote[]>;
+function vote(themeID: number, sessionToken: string, answer: number): Promise<void>;
 function getAllTransitions(): Promise<Transition[]>;
 function getTransition(themeID: number): Promise<Transition>;
 function getAllComments(): Promise<Comment[][]>;
 function getComments(themeID: number): Promise<Comment[]>;
-function comment(themeID: number, sessionToken: string, message: string): Promise<Comment[]>;
+function comment(themeID: number, sessionToken: string, message: string): Promise<void>;
 ```
 
 ### Types
