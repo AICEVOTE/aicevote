@@ -11,9 +11,9 @@ interface Theme {
 };
 
 export async function getAllThemes(): Promise<Theme[]> {
-    return (await axios.get("/themes")).data;
+    return (await axios.get("/theme/themes")).data;
 }
 
 export async function getTheme(themeID: number): Promise<Theme> {
-    return (await axios.get(`/themes/${themeID}`)).data;
+    return (await axios.get(`/theme/themes/${themeID}`)).data;
 }
