@@ -79,18 +79,32 @@ import aicevote from "aicevote";
 
 ``` typescript
 // Auth
-function getSessionToken(sessionID: string): Promise<string>;
+function getSessionToken(sessionID: string): Promise<{
+    userProvider: string;
+    userID: string;
+    sessionID: string;
+    sessionIDExpire: number;
+    sessionToken: string;
+    sessionTokenExpire: number;
+}>;
 
 // Index
+function getArticles(): Promise<{
+    latest: Article[];
+    related: {
+        themeID: number;
+        articles: Article[];
+    }[];
+}>;
 function postFeedback(feedback: string): Promise<void>;
 function postApplication(application: string): Promise<void>;
 
-// News
-function getAllArticles(): Promise<{
-    latest: Article[];
-    related: Article[][];
-}>;
-function getRelatedArticles(themeID: number): Promise<Article[]>;
+// Theme
+function getAllThemes(): Promise<Theme[]>;
+function getTheme(themeID: number): Promise<Theme>;
+function putTheme(themeID: number, sessionToken: string, isEnabled: boolean, 
+    title: string, description: string, imageURI: string, genre: number, 
+    choices: string, DRClass: number): Promise<void>;
 
 // User
 function getMyProfile(sessionToken: string): Promise<Profile>;
@@ -99,19 +113,11 @@ function getProfiles(users: {
     userID: string;
 }[]): Promise<Profile[]>;
 
-// Theme
-function getAllThemes(): Promise<Theme[]>;
-function getTheme(themeID: number): Promise<Theme>;
-
 // Vote
-function getAllResults(): Promise<Result[]>;
 function getResult(themeID: number): Promise<Result>;
-function getAllVotes(sessionToken: string): Promise<Vote[][]>;
 function getVotes(themeID: number, sessionToken: string): Promise<Vote[]>;
 function vote(themeID: number, sessionToken: string, answer: number): Promise<void>;
-function getAllTransitions(): Promise<Transition[]>;
 function getTransition(themeID: number): Promise<Transition>;
-function getAllComments(): Promise<Comment[][]>;
 function getComments(themeID: number): Promise<Comment[]>;
 function comment(themeID: number, sessionToken: string, message: string): Promise<void>;
 ```
@@ -119,7 +125,7 @@ function comment(themeID: number, sessionToken: string, message: string): Promis
 ### Types
 
 ``` typescript
-// News
+// Index
 interface Article {
     source: string;
     author: string;
@@ -133,6 +139,8 @@ interface Article {
 // Theme
 interface Theme {
     themeID: number;
+    userProvider: string;
+    userID: string;
     title: string;
     description: string;
     imageURI: string;
@@ -151,12 +159,13 @@ interface Profile {
     isInfluencer: boolean;
     votes: Vote[];
     comments: Comment[];
+    themes: Theme[];
 }
 
 // Vote
 interface Result {
-    results: number[];
-    counts: number[];
+    themeID: number;
+    percentage: number[];
 }
 interface Vote {    
     themeID: number;
@@ -184,4 +193,4 @@ interface Comment {
 }
 ```
 
-(C) 2020 YUJI
+(C) 2020 YUJI mail@yuji.ne.jp

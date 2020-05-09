@@ -1,5 +1,6 @@
 import axios from "./axios";
-import type { Vote, Comment } from "./vote";
+import type { Theme } from "./theme";
+import type { Comment, Vote } from "./vote";
 
 export type userProvider = "twitter" | "legacy"
 
@@ -11,6 +12,7 @@ interface Profile {
     isInfluencer: boolean;
     votes: Vote[];
     comments: Comment[];
+    themes: Theme[];
 };
 
 export async function getMyProfile(sessionToken: string): Promise<Profile> {

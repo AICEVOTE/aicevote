@@ -2,8 +2,8 @@ import axios from "./axios";
 import type { userProvider } from "./user";
 
 interface Result {
-    results: number[];
-    counts: number[];
+    themeID: number;
+    percentage: number[];
 }
 
 export interface Vote {
@@ -15,6 +15,7 @@ export interface Vote {
 }
 
 interface Transition {
+    themeID: number;
     shortTransition: { timestamp: number, percentage: number[] }[];
     longTransition: { timestamp: number, percentage: number[] }[];
 }
@@ -27,17 +28,8 @@ export interface Comment {
     createdAt: number;
 }
 
-export async function getAllResults(): Promise<Result[]> {
-    return (await axios.get("/vote/results")).data;
-}
-
 export async function getResult(themeID: number): Promise<Result> {
     return (await axios.get(`/vote/results/${themeID}`)).data;
-}
-
-export async function getAllVotes(sessionToken: string): Promise<Vote[][]> {
-    return (await axios.get(`/vote/votes?sessiontoken=${sessionToken}`)).data
-        .map((data: any) => data.votes.concat(data.votesFromInfluencer));
 }
 
 export async function getVotes(themeID: number, sessionToken: string): Promise<Vote[]> {
@@ -49,17 +41,8 @@ export async function vote(themeID: number, sessionToken: string, answer: number
     await axios.put(`/vote/votes/${themeID}?sessiontoken=${sessionToken}&answer=${answer}`);
 }
 
-export async function getAllTransitions(): Promise<Transition[]> {
-    return (await axios.get("/vote/transitions")).data;
-}
-
 export async function getTransition(themeID: number): Promise<Transition> {
     return (await axios.get(`/vote/transitions/${themeID}`)).data;
-}
-
-export async function getAllComments(): Promise<Comment[][]> {
-    return (await axios.get("/vote/comments")).data
-        .map((data: any) => data.comments);
 }
 
 export async function getComments(themeID: number): Promise<Comment[]> {
