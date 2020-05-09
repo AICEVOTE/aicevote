@@ -153,7 +153,7 @@ interface Theme {
 type userProvider = "twitter" | "legacy";
 interface Profile {
     userProvider: userProvider;
-    userID: number;
+    userID: string;
     name: string;
     imageURI: string;
     isInfluencer: boolean;
