@@ -79,14 +79,7 @@ import aicevote from "aicevote";
 
 ``` typescript
 // Auth
-function getSessionToken(sessionID: string): Promise<{
-    userProvider: string;
-    userID: string;
-    sessionID: string;
-    sessionIDExpire: number;
-    sessionToken: string;
-    sessionTokenExpire: number;
-}>;
+function getSessionToken(sessionID: string): Promise<string>;
 
 // Index
 function getArticles(): Promise<{
