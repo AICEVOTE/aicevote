@@ -1,4 +1,4 @@
-# aicevote
+# aicevote - AICEVOTE API Client Library -
 
 [![npm version](https://img.shields.io/npm/v/aicevote.svg?style=flat-square)](https://www.npmjs.org/package/aicevote)
 [![install size](https://badgen.net/packagephobia/install/aicevote?style=flat-square)](https://packagephobia.now.sh/result?p=aicevote)
@@ -7,7 +7,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/aicevote/aicevote.svg?style=flat-square)](https://github.com/aicevote/aicevote)
 ![TypeScript](https://img.shields.io/github/languages/top/aicevote/aicevote.svg?style=flat-square)
 
-AICEVOTE API Client Library
+**This project will be frozen on May 18, 2020**
 
 ## Installing
 
@@ -95,6 +95,7 @@ function postApplication(application: string): Promise<void>;
 // Theme
 function getAllThemes(): Promise<Theme[]>;
 function getTheme(themeID: number): Promise<Theme>;
+function queryThemes(regex: string): Promise<Theme[]>;
 function putTheme(themeID: number, sessionToken: string, isEnabled: boolean, 
     title: string, description: string, imageURI: string, genre: number, 
     choices: string, DRClass: number): Promise<void>;
