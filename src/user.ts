@@ -9,6 +9,7 @@ interface Profile {
     userID: string;
     name: string;
     imageURI: string;
+    friends: string[];
     isInfluencer: boolean;
     votes: Vote[];
     comments: Comment[];
@@ -21,4 +22,8 @@ export async function getMyProfile(sessionToken: string): Promise<Profile> {
 
 export async function getProfiles(users: { userProvider: userProvider, userID: string }[]): Promise<Profile[]> {
     return (await axios.post("/user/profiles", users)).data;
+}
+
+export async function getInfluencers(): Promise<string[]> {
+    return (await axios.get("/user/influencers")).data;
 }
