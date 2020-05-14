@@ -98,7 +98,7 @@ function getTheme(themeID: number): Promise<Theme>;
 function queryThemes(regex: string): Promise<Theme[]>;
 function putTheme(themeID: number, sessionToken: string, isEnabled: boolean, 
     title: string, description: string, imageURI: string, genre: number, 
-    choices: string, DRClass: number): Promise<void>;
+    choices: string, DRClass: number, isPersonalMatters: boolean): Promise<void>;
 
 // User
 function getMyProfile(sessionToken: string): Promise<Profile>;
@@ -141,6 +141,7 @@ interface Theme {
     imageURI: string;
     genre: number;
     choices: string[];
+    isPersonalMatters: boolean;
     topicality: number;
 }
 

@@ -9,6 +9,7 @@ export interface Theme {
     imageURI: string;
     genre: number;
     choices: string[];
+    isPersonalMatters: boolean;
     topicality: number;
 };
 
@@ -26,9 +27,9 @@ export async function queryThemes(regex: string): Promise<Theme[]> {
 
 export async function putTheme(themeID: number, sessionToken: string,
     isEnabled: boolean, title: string, description: string, imageURI: string,
-    genre: number, choices: string, DRClass: number): Promise<void> {
+    genre: number, choices: string, DRClass: number, isPersonalMatters: boolean): Promise<void> {
     await axios.put(`/theme/themes/${themeID}?`
         + `sessionToken=${sessionToken}&isenabled=${isEnabled}`
         + `&title=${title}&description=${description}&imageuri=${imageURI}`
-        + `&genre=${genre}&choices=${choices}&DRClass=${DRClass}`);
+        + `&genre=${genre}&choices=${choices}&drclass=${DRClass}&ispersonalmatters=${isPersonalMatters}`);
 }
